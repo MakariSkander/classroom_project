@@ -1,0 +1,12 @@
+# Large AI models and installers
+*.gguf
+OllamaSetup.exe
+
+# Python environments and caches
+venv/
+.venv/
+__pycache__/
+
+# Build files
+build/
+dist/

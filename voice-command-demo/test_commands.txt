@@ -1,0 +1,8 @@
+hello
+activate driving mode
+navigate to monastir railway station
+where am i
+navigate to sousse medina
+navigate to kairouan
+navigate to mahdia
+goodbye
