@@ -23,7 +23,10 @@ A C++ project developed with Microsoft Visual Studio, focused on string encoding
 
 [Explore the project](./02_code_decode_string/)
 
-## Author
+### 03 — Correction KPPV
 
-**Skandar Makari**  
-Microelectronics Engineer | Embedded Systems | Robotics
+A project involving K-Nearest Neighbors (KNN/KPPV) classification.
+
+[Explore the project](./03_correction_kppv/)
+
+
