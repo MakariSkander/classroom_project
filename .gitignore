@@ -10,3 +10,14 @@ __pycache__/
 # Build files
 build/
 dist/
+# Visual Studio temporary and generated files
+.vs/
+**/.vs/
+x64/
+x86/
+Debug/
+Release/
+*.user
+*.suo
+*.aps
+*.ipch

@@ -1,0 +1,17 @@
+﻿  Correction de KppvDlg.cpp
+D:\Correction de Kppv\Correction de KppvDlg.cpp(217,29): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file '/Correction%20de%20KppvDlg.cpp')
+  
+D:\Correction de Kppv\Correction de KppvDlg.cpp(274,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file '/Correction%20de%20KppvDlg.cpp')
+  
+D:\Correction de Kppv\Correction de KppvDlg.cpp(275,28): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file '/Correction%20de%20KppvDlg.cpp')
+  
+D:\Correction de Kppv\Correction de KppvDlg.cpp(293,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file '/Correction%20de%20KppvDlg.cpp')
+  
+D:\Correction de Kppv\Correction de KppvDlg.cpp(294,28): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file '/Correction%20de%20KppvDlg.cpp')
+  
+  Correction de Kppv.vcxproj -> D:\Correction de Kppv\x64\Debug\Correction de Kppv.exe
