@@ -1,32 +1,25 @@
-# Classroom Projects
+# 🎓 Classroom Projects
 
-A collection of academic projects in C++, embedded systems, electronics, robotics, and software development.
+Academic projects completed during my studies, covering embedded systems, AI and C++ programming.
 
-## Projects
+| # | Project | Topics | Tech |
+|---|---|---|---|
+| 01 | [Smart Vehicle with Voice Assistant](./01_smart_vehicle_voice_assistant/) | Embedded systems, speech recognition, local LLM | Python, Whisper, Llama, Raspberry Pi, STM32, CAN |
+| 02 | [Code / Decode String](./02_code_decode_string/) | Character encoding and decoding | C++, Visual Studio |
+| 03 | [KNN Classification (KPPV)](./03_correction_kppv/) | Machine learning, k-nearest neighbors, GUI | C++, MFC, Visual Studio |
 
-### 01 — Smart Vehicle & Digital Voice Assistant
+## 01 · Smart Vehicle with Voice Assistant
 
-An integrated project combining smart vehicle functionality and a digital voice assistant.
+Classroom prototype of an in-car voice assistant. The driver speaks a command, the assistant converts it to text (Whisper), understands it with a local language model (Llama 3.2), runs the matching action and answers by voice. The project report describes the embedded architecture: a Raspberry Pi running Yocto Linux that talks to an STM32 board over the CAN bus to control lights and a DC motor and to read temperature, light and humidity sensors.
 
-**Contents:**
-- Voice assistant source code and modules
-- Project files and supporting resources
-- Technical report
+## 02 · Code / Decode String
 
-[Explore the project](./01_smart_vehicle_voice_assistant/)
+C++ console program that encodes each character of a text into a scrambled group of 8 letters, then decodes it back using a letter histogram and bit shifting.
 
-### 02 — Code Decode String
+## 03 · KNN Classification (KPPV)
 
-A C++ project developed with Microsoft Visual Studio, focused on string encoding and decoding.
+Windows desktop application (MFC) to visualize the k-nearest neighbors algorithm. Click to place training points of two classes, then classify new points with the KNN rule (k = 7). The app can also compute and draw the barycenter of each class.
 
-**Technologies:** C++, Visual Studio
+## Author
 
-[Explore the project](./02_code_decode_string/)
-
-### 03 — Correction KPPV
-
-A project involving K-Nearest Neighbors (KNN/KPPV) classification.
-
-[Explore the project](./03_correction_kppv/)
-
-
+Skandar Makari · [GitHub](https://github.com/MakariSkander)

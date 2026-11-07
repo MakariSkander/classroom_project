@@ -163,78 +163,79 @@ HCURSOR CCorrectiondeKppvDlg::OnQueryDragIcon()
 
 void CCorrectiondeKppvDlg::OnRButtonDown(UINT nFlags, CPoint point)
 {
-
+	// Right click: add a training point of class 1
 	SPiont p;
 	p.x = point.x;
 	p.y = point.y;
 	p.cla = 1;
 	PiontClasseun.push_back(p);
-	
-		// TODO: Add your message handler code here and/or call default
-
-	CDialogEx::OnLButtonDown(nFlags, point);
+	CDialogEx::OnRButtonDown(nFlags, point);
 }
 
 void CCorrectiondeKppvDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	// Left click: add a training point of class 0
 	SPiont p;
 	p.x = point.x;
 	p.y = point.y;
 	p.cla = 0;
 	PiontClasseZero.push_back(p);
-	CDialogEx::OnRButtonDown(nFlags, point);
+	CDialogEx::OnLButtonDown(nFlags, point);
 }
 
 void CCorrectiondeKppvDlg::OnMButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
-
+	// Middle click: classify the point with the k-nearest neighbors rule
 	SPiont p;
 	p.x = point.x;
 	p.y = point.y;
 	p.cla = 0;
 	vector<SDist> Vectdistance;
-	int k = 7;
-	int classe0 = 0;
-	for (unsigned int i = 0;i < PiontClasseZero.size(); i++)
+	unsigned int k = 7;
+	unsigned int classe0 = 0;
+
+	// Squared Euclidean distance to every training point
+	for (unsigned int i = 0; i < PiontClasseZero.size(); i++)
 	{
 		SDist Dist;
 		Dist.Dist = ((double)p.x - (double)PiontClasseZero[i].x) * ((double)p.x - (double)PiontClasseZero[i].x);
-		Dist.Dist += ((double)p.x - (double)PiontClasseZero[i].x) * ((double)p.x - (double)PiontClasseZero[i].x);
+		Dist.Dist += ((double)p.y - (double)PiontClasseZero[i].y) * ((double)p.y - (double)PiontClasseZero[i].y);
 		Dist.Cla = 0;
 		Vectdistance.push_back(Dist);
 	}
-
-	for (unsigned int i = 0;i < PiontClasseun.size(); i++)
+	for (unsigned int i = 0; i < PiontClasseun.size(); i++)
 	{
 		SDist Dist;
 		Dist.Dist = ((double)p.x - (double)PiontClasseun[i].x) * ((double)p.x - (double)PiontClasseun[i].x);
-		Dist.Dist += ((double)p.x - (double)PiontClasseun[i].x) * ((double)p.x - (double)PiontClasseun[i].x);
+		Dist.Dist += ((double)p.y - (double)PiontClasseun[i].y) * ((double)p.y - (double)PiontClasseun[i].y);
 		Dist.Cla = 1;
 		Vectdistance.push_back(Dist);
-		sort(Vectdistance.begin(), Vectdistance.end(), myfunction);
-		for (unsigned int i = 0;i < k;i++)
-		{
-			if (Vectdistance[i].Cla == 0)classe0;
-		}
-
-		//classification 
-		CClientDC dc(this);
-		CPen styloRouge(PS_SOLID, 2, RGB(255, 0, 0));
-		CPen styloBleu(PS_SOLID, 2, RGB(0, 0, 255));
-		dc.SelectObject(&styloRouge);
-		if (classe0 > (k / 2))
-		{
-			dc.SelectObject(&styloBleu);
-		}
-		else dc.SelectObject(&styloRouge);
-		dc.Rectangle(p.x, p.y, p.x + 10, p.y + 10);
-
-
-
-		CDialogEx::OnMButtonDown(nFlags, point);
 	}
+
+	if (Vectdistance.empty())
+	{
+		CDialogEx::OnMButtonDown(nFlags, point);
+		return;
+	}
+	if (k > Vectdistance.size()) k = (unsigned int)Vectdistance.size();
+
+	// Majority vote among the k nearest neighbors
+	sort(Vectdistance.begin(), Vectdistance.end(), myfunction);
+	for (unsigned int i = 0; i < k; i++)
+	{
+		if (Vectdistance[i].Cla == 0) classe0++;
+	}
+
+	// Draw the classified point: blue = class 0, red = class 1
+	CClientDC dc(this);
+	CPen styloRouge(PS_SOLID, 2, RGB(255, 0, 0));
+	CPen styloBleu(PS_SOLID, 2, RGB(0, 0, 255));
+	if (classe0 > (k / 2))
+		dc.SelectObject(&styloBleu);
+	else
+		dc.SelectObject(&styloRouge);
+	dc.Rectangle(p.x, p.y, p.x + 10, p.y + 10);
+	CDialogEx::OnMButtonDown(nFlags, point);
 }
 
 void CCorrectiondeKppvDlg::OnBnClickedButtonValider()
@@ -270,7 +271,7 @@ void CCorrectiondeKppvDlg::OnBnClickedButton1Barrycentre()
 
 	SPiont barry1, barry0;
 	barry1.x = barry1.y = 0; barry1.cla = 1;
-	barry0.x = barry0.y = 0; barry1.cla = 0;
+	barry0.x = barry0.y = 0; barry0.cla = 0;
 	int Taille1 = PiontClasseun.size();
 	for (unsigned int i = 0;i < Taille1; i++) 
 	{

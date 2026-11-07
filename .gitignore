@@ -20,4 +20,8 @@ Release/
 *.user
 *.suo
 *.aps
-*.ipch
+*.ipch*.lnk
+*.pdb
+*.ilk
+*.obj
+*.exe

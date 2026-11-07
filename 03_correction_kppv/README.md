@@ -1,16 +1,27 @@
-# Correction KPPV
+# 📍 KNN Classification (KPPV)
 
-A C++ project developed using Microsoft Visual Studio, implementing the K-Nearest Neighbors (KNN/KPPV) classification algorithm.
+Windows desktop application in C++ (MFC) that shows how the **k-nearest neighbors** algorithm (KNN, *k plus proches voisins* in French) classifies points.
 
-## Technologies
+## How to use
+
+| Action | Result |
+|---|---|
+| **Left click** | Adds a training point of class 0 |
+| **Right click** | Adds a training point of class 1 |
+| **Middle click** | Classifies the clicked point with KNN (k = 7). Blue = class 0, red = class 1 |
+| **Valider button** | Displays all training points (squares = class 1, circles = class 0) |
+| **Barycentre button** | Computes and draws the barycenter (center) of each class |
+
+## How it works
+
+For a new point, the program computes the Euclidean distance to every training point, sorts the distances, and takes a majority vote among the 7 nearest neighbors.
+
+## Tech
+
 - C++
-- Microsoft Visual Studio
 - MFC (Microsoft Foundation Classes)
+- Microsoft Visual Studio
 
-## Project Contents
-- C++ source and header files
-- Visual Studio solution and project configuration
-- Resource files and application interface
+## Run
 
-## Execution
-Open `Correction de Kppv.sln` with Microsoft Visual Studio and build the solution.
+Open `Correction de Kppv.sln` in Visual Studio (with the MFC component installed), then build and run.
